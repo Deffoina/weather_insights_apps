@@ -1,7 +1,6 @@
-plt.plot(history['date'], history['temp'], label="Temperature")
-plt.plot(history['date'], history['humidity'], label="Humidity")
-plt.legend()
-plt.title("Weather Trends")
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
+history = pd.read_csv(
+    'data/history.csv',
+    names=['date', 'temp', 'humidity', 'weather']
+)
+
+history['date'] = pd.to_datetime(history['date'])
