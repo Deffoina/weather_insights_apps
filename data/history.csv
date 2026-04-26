@@ -1,6 +1,8 @@
 history = pd.read_csv(
     'data/history.csv',
-    names=['date', 'temp', 'humidity', 'weather']
+    names=['date', 'temp', 'humidity', 'weather'],
+    on_bad_lines='skip'
 )
 
-history['date'] = pd.to_datetime(history['date'])
+history['date'] = pd.to_datetime(history['date'], errors='coerce')
+history = history.dropna()
